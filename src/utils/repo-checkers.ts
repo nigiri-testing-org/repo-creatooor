@@ -36,9 +36,8 @@ export class RepoCheckers {
       this.assert(repoData.homepage == 'https://defi.sucks/', `Repo ${repoData.homepage} is not https://defi.sucks/`);
     }
 
-    // TODO: change to true
     console.log('Checking repo is private...');
-    this.assert(repoData.private == false, `Repo ${this.repo} is public`);
+    this.assert(repoData.private == true, `Repo ${this.repo} is public`);
 
     console.log('Checking allow squash merge enabled...');
     this.assert(repoData.allow_squash_merge == true, `Repo ${this.repo} does not allow squash merge`);

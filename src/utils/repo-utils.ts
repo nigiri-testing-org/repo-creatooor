@@ -15,7 +15,6 @@ export class RepoUtils {
   }
 
   // FI: create different configs
-  // TODO: set private instead of public
   async createRepo(owner: string, repoName: string, repoDescription: string): Promise<void> {
     console.log('........................................');
     console.log('Creating repo...');
@@ -25,7 +24,7 @@ export class RepoUtils {
       description: repoDescription,
       homepage: 'https://defi.sucks/',
       private: false,
-      visibility: 'public',
+      visibility: 'private',
       has_issues: true,
       has_projects: true,
       has_wiki: true,
@@ -109,13 +108,12 @@ export class RepoUtils {
 
   async createRepoFromTemplate(owner: string, repo: string, templateOwner: string, templateRepo: string): Promise<void> {
     console.log(`Creating ${repo} from ${templateRepo} of ${templateOwner} template...`);
-    // TODO: make it private
     const createRepoFromTemplatePayload: CreateRepoFromTemplatePayload = {
       owner: owner,
       name: repo,
       description: '',
       include_all_branches: false,
-      private: false,
+      private: true,
     };
 
     await this.githubApi.createRepoFromTemplate(templateOwner, templateRepo, createRepoFromTemplatePayload);
