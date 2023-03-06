@@ -8,7 +8,7 @@ export class RepoCheckers {
   private templateRepo: string;
   private admin: string;
 
-  constructor(githubApi: GithubApi, owner: string, repo: string, templateOrg: string, templateRepo: string, admin: string) {
+  constructor(private githubApi: GithubApi, private owner: string, private  repo: string, private templateOrg: string, private templateRepo: string, private admin: string) {}
     this.githubApi = githubApi;
     this.owner = owner;
     this.repo = repo;
