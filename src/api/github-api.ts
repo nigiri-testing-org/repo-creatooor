@@ -1,4 +1,3 @@
-import axiosRetry from 'axios-retry';
 import axios, { AxiosInstance } from 'axios';
 import {
   GetRefResponse,
@@ -25,7 +24,6 @@ export class GithubApi {
       baseURL: 'https://api.github.com',
     });
     this.axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
-    axiosRetry(this.axios, { retries: 3 });
   }
 
   async createRepo(owner: string, createRepoPayload: CreateRepoPayload): Promise<CreateRepoResponse> {

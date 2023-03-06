@@ -7,8 +7,12 @@ on:
         description: "Repository name"
         required: true
       repo_codeowner:
-        description: "Codeowner (eg. solidity-team-codeowner)"
-        required: false
+        description: "Codeowners"
+        options:
+          - default-codeowner
+          - dev-ops
+          - price-solidity
+          - solidity-team
       from_template_owner:
         description: "Template owner (eg. defi-wonderland)"
         required: false

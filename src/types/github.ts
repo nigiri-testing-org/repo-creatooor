@@ -301,13 +301,3 @@ export type CollaboratorsResponse = {
     admin: boolean;
   };
 }[];
-
-export const ALLOWED_CODE_OWNERS = [
-  'dev-ops',
-  'price-solidity',
-  'solidity-team',
-  'dev-ops-codeowner',
-  'price-solidity-codeowner',
-  'solidity-team-codeowner',
-  'default-codeowner',
-];

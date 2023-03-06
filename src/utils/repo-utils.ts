@@ -14,7 +14,6 @@ export class RepoUtils {
     this.githubApi = githubApi;
   }
 
-  // FI: create different configs
   async createRepo(owner: string, repoName: string, repoDescription: string): Promise<void> {
     console.log('........................................');
     console.log('Creating repo...');

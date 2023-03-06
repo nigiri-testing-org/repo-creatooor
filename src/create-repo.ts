@@ -1,5 +1,4 @@
 import { GithubApi } from './api/github-api';
-import { ALLOWED_CODE_OWNERS } from './types/github';
 import { getEnvVariable, getEnvVariableOrEmpty } from './utils/env';
 import { RepoCheckers } from './utils/repo-checkers';
 import { RepoUtils } from './utils/repo-utils';
@@ -16,10 +15,6 @@ const createRepo = async () => {
   const templateRepo = getEnvVariableOrEmpty('GH_TEMPLATE_REPO');
   const repoCheckers = new RepoCheckers(githubApi, owner, repo, templateOwner, templateRepo, admin);
 
-  if (codeowner != '' && ALLOWED_CODE_OWNERS.indexOf(codeowner) == -1) {
-    throw Error(`Codeowner '${codeowner}' is not allowed!`);
-  }
-
   if (templateOwner != '' && templateRepo != '') {
     await repoUtils.createRepoFromTemplate(owner, repo, templateOwner, templateRepo);
     console.log('Waiting for repo to be created...');
@@ -34,7 +29,7 @@ const createRepo = async () => {
     await repoUtils.renameBranch(owner, repo, branches[0].name, 'main');
   }
 
-  await repoUtils.addCodewoners(owner, repo, codeowner == '' ? 'default-codeowner' : codeowner);
+  await repoUtils.addCodewoners(owner, repo, codeowner);
   await repoUtils.addCollaborator(owner, repo, admin, 'admin');
   await repoUtils.updateBranchProtection(owner, repo, 'main', true);
   await repoUtils.requireSignature(owner, repo, 'main');
