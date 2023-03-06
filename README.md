@@ -3,19 +3,21 @@
 This repository creator workflow allows users to create new repositories with all the Wonderland securities configuration. The main features of this workflow are:
 
 - The only mandatory field is the repository name, but the user can provide additional options such as:
-    - The codeowners.
-    - Create from template providing a template owner and a template repo.
+  - The codeowners.
+  - Create from template providing a template owner and a template repo.
 - The repository created will have two branches, `main` (default) and `dev` with the following setup:
 
   **Critical**
-  * Signed commits
-  * 1-2 minimum approvals for a PR to be merged
-  * Lock main/master branch and dev branch, you should only use side branches
-  * Only merge to main from dev
-  * Codeowners for the main branch
-  * Require conversation resolution before merging
-  
+
+  - Signed commits
+  - 1-2 minimum approvals for a PR to be merged
+  - Lock main/master branch and dev branch, you should only use side branches
+  - Only merge to main from dev
+  - Codeowners for the main branch
+  - Require conversation resolution before merging
+
   **Repository Settings**
+
   - [ ] Disable "Allow rebase merging"
   - [ ] Enable "Automatically delete head branches"
   - [ ] Main branch protection
@@ -45,4 +47,4 @@ To use this repository creator workflow, follow these steps:
 3. Fill in the mandatory field "Repository name".
 4. If desired, select the "Codeowners" field and/or provide a template owner and a template repository.
 5. Click on "Run Workflow".
-5. After the repository is created, a link to the new repository will be provided.
+6. After the repository is created, a link to the new repository will be provided.
