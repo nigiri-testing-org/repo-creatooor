@@ -8,11 +8,7 @@ import {
 } from '../types/github';
 
 export class RepoUtils {
-  private githubApi: GithubApi;
-
-  constructor(githubApi: GithubApi) {
-    this.githubApi = githubApi;
-  }
+  constructor(private githubApi: GithubApi) {}
 
   async createRepo(owner: string, repoName: string, repoDescription: string): Promise<void> {
     console.log('........................................');

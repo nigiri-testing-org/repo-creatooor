@@ -1,21 +1,14 @@
 import { GithubApi } from '../api/github-api';
 
 export class RepoCheckers {
-  private githubApi: GithubApi;
-  private owner: string;
-  private repo: string;
-  private templateOrg: string;
-  private templateRepo: string;
-  private admin: string;
-
-  constructor(private githubApi: GithubApi, private owner: string, private  repo: string, private templateOrg: string, private templateRepo: string, private admin: string) {}
-    this.githubApi = githubApi;
-    this.owner = owner;
-    this.repo = repo;
-    this.templateOrg = templateOrg;
-    this.templateRepo = templateRepo;
-    this.admin = admin;
-  }
+  constructor(
+    private githubApi: GithubApi,
+    private owner: string,
+    private repo: string,
+    private templateOrg: string,
+    private templateRepo: string,
+    private admin: string
+  ) {}
 
   assert(condition: boolean, message: string) {
     if (!condition) {
