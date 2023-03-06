@@ -5,7 +5,6 @@ This repository creator workflow allows users to create new repositories with al
 - The only mandatory field is the repository name, but the user can provide additional options such as:
     - The codeowners.
     - Create from template providing a template owner and a template repo.
-- At the end of the workflow, a link to the new repository will be created.
 - The repository created will have two branches, `main` (default) and `dev` with the following setup:
 
   **Critical**
@@ -41,8 +40,9 @@ Always remember to add collaborators to teams instead of individual members, sin
 
 To use this repository creator workflow, follow these steps:
 
-1. Click on the "Use this template" button to create a new repository from this template.
-2. Fill in the mandatory field "Repository name".
-3. If desired, fill in the "Codeowners" field and/or select "Create from template" and provide a template owner and a template repository.
-4. Click on "Create repository".
+1. Click on the actions button and then click on the "Repo creation" action.
+2. Click on "Run Workflow".
+3. Fill in the mandatory field "Repository name".
+4. If desired, select the "Codeowners" field and/or provide a template owner and a template repository.
+5. Click on "Run Workflow".
 5. After the repository is created, a link to the new repository will be provided.
