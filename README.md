@@ -1,4 +1,4 @@
-# Repo Creator Workflow
+# Repo Creatooor
 
 This repository creator workflow allows users to create new repositories with all the Wonderland securities configuration. The main features of this workflow are:
 
