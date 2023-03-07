@@ -64,7 +64,7 @@ export class GithubApi {
 
   async addCodeOwners(owner: string, repo: string, teamName: string): Promise<void> {
     const file = '.github/CODEOWNERS';
-    const content: string = `\*\@${owner}/${teamName}`;
+    const content: string = `* ${teamName}`;
     const b64Content: string = Buffer.from(content).toString('base64');
     const body: object = {
       message: 'Added CODEOWNERS to Repo',

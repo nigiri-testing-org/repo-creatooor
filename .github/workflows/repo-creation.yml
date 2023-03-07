@@ -7,7 +7,7 @@ on:
         description: "Repository name"
         required: true
       repo_codeowner:
-        description: "Codeowners (eg: defi-wonderland/price-solidity-codeowners)"
+        description: "Codeowners (eg: @defi-wonderland/price-solidity-codeowners)"
         required: false
       from_template_owner:
         description: "Template owner (eg. defi-wonderland)"
