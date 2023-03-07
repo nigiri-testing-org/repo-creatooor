@@ -100,7 +100,7 @@ export class RepoCheckers {
     console.log('Checking lock branch disabled');
     this.assert(branchData.lock_branch.enabled == false, `Repo ${this.repo} locks branch for ${branchName} branch`);
 
-    console.log('Checking commit signature protection for branch ${branchName}...');
+    console.log(`Checking commit signature protection for branch ${branchName}...`);
     const signatureProtection = await this.githubApi.getCommitSignatureProctection(this.owner, this.repo, branchName);
     this.assert(
       signatureProtection.enabled == true,

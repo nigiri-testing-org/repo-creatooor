@@ -89,10 +89,10 @@ export class RepoUtils {
     console.log(`Signature requirement for ${branchName} branch enabled!`);
   }
 
-  async addCodewoners(owner: string, repoName: string, teamName: string): Promise<void> {
-    console.log(`Adding codewoners for ${teamName}...`);
+  async addCodeowners(owner: string, repoName: string, teamName: string): Promise<void> {
+    console.log(`Adding codeowners for ${teamName}...`);
     await this.githubApi.addCodeOwners(owner, repoName, teamName);
-    console.log(`Codewoners for ${teamName} added!`);
+    console.log(`Codeowners for ${teamName} added!`);
   }
 
   async addCollaborator(owner: string, repoName: string, username: string, adminLevel: string): Promise<void> {
