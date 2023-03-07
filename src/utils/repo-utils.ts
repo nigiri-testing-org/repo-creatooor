@@ -48,7 +48,7 @@ export class RepoUtils {
     const updateBranchProtectionPayload: UpdateBranchProtectionPayload = {
       required_status_checks: {
         strict: true,
-        contexts: ['continuous-integration/travis-ci'],
+        contexts: [],
       },
       required_pull_request_reviews: {
         dismiss_stale_reviews: true,
