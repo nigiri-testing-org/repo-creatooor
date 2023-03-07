@@ -8,7 +8,7 @@ on:
         required: true
       repo_codeowner:
         description: "Codeowners (eg: defi-wonderland/price-solidity-codeowners)"
-        required: true
+        required: false
       from_template_owner:
         description: "Template owner (eg. defi-wonderland)"
         required: false
