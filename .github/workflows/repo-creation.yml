@@ -6,9 +6,6 @@ on:
       repo_name:
         description: "Repository name"
         required: true
-      repo_codeowner:
-        description: "Codeowners (default: @defi-wonderland/default-codeowner)"
-        required: false
       template:
         description: "Template (eg. defi-wonderland/solidity-foundry-boilerplate)"
         required: false
@@ -46,7 +43,6 @@ jobs:
           GH_OWNER: ${{ vars.GH_OWNER }}
           GH_REPO_NAME: ${{ github.event.inputs.repo_name }}
           GH_USER_CREATOR: ${{ github.actor }}
-          GH_CODEOWNER: ${{ github.event.inputs.repo_codeowner }}
           GH_TEMPLATE: ${{ github.event.inputs.template }}
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         run: yarn create-repo
