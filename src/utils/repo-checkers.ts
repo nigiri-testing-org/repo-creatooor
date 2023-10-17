@@ -42,7 +42,7 @@ export class RepoCheckers {
 
   async getRepoAssertions(newRepo: boolean = true): Promise<Assertion[]> {
     const repoAssertions: Assertion[] = [];
-    this.log('.........................................................');
+    this.log('..........................................................');
     this.log(`Running checks for repo ${this.repo} in ${this.owner} 📝 ...`);
     const config: RepoPayload = defaultRepoCreateConfig(this.owner, this.repo, '');
     const repoData = await this.githubApi.getRepository(this.owner, this.repo);
