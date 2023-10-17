@@ -95,12 +95,6 @@ export class RepoUtils {
     console.log(`Signature requirement for ${branchName} branch enabled!`);
   }
 
-  async addCodeowners(owner: string, repoName: string, teamName: string): Promise<void> {
-    console.log(`Adding codeowners for ${teamName}...`);
-    await this.githubApi.addCodeOwners(owner, repoName, teamName);
-    console.log(`Codeowners for ${teamName} added!`);
-  }
-
   async addAutolink(owner: string, repoName: string, projectCode: string): Promise<void> {
     console.log(`Adding autolink for ${projectCode}...`);
     await this.githubApi.addAutolink(owner, repoName, projectCode);
