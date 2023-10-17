@@ -14,6 +14,7 @@ const createRepo = async () => {
   const template = getEnvVariableOrEmpty('GH_TEMPLATE');
   const repoCheckers = new RepoCheckers(githubApi, owner, repo, template, admin);
   const discordWebhook = getEnvVariableOrEmpty('DISCORD_WEBHOOK');
+  const projectCode = getEnvVariableOrEmpty('LINEAR_PROJECT_CODE');
 
   notifyDiscord(discordWebhook, `${admin} triggered repo creation: **${repo}** for **${owner}** org 📦 `);
 
@@ -29,6 +30,10 @@ const createRepo = async () => {
     // Check or create main branch
     await repoUtils.checkBranchExistsOrCreate(owner, repo, 'main');
 
+    if (projectCode != '') {
+      await repoUtils.addAutolink(owner, repo, projectCode);
+      await repoUtils.addPrTemplate(owner, repo, projectCode);
+    }
     await repoUtils.addCollaborator(owner, repo, admin, 'admin');
     await repoUtils.checkBranchExistsOrCreate(owner, repo, 'dev', 'main');
     await repoUtils.updateRepo(owner, repo, '');
