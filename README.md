@@ -26,6 +26,7 @@ The repository creator workflow allows users to create new repositories with all
   - [✓] Enable "Require a pull request before merging"
   - [✓] Change "Require approvals" to 2
   - [✓] Enable "Dismiss stale pull request approvals when new commits are pushed"
+  - [✓] Disable "Require review from Code Owners"
   - [✓] Enable "Require status checks to pass before merging"
   - [✓] Enable "Require branches to be up to date before merging"
   - [✓] Enable "Require signed commits"
