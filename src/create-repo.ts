@@ -11,7 +11,6 @@ const createRepo = async () => {
   const repoUtils = new RepoUtils(githubApi);
   const repo = getEnvVariable('GH_REPO_NAME').replace(/ /g, '-');
   const admin = getEnvVariable('GH_USER_CREATOR');
-  const codeowner = getEnvVariableOrEmpty('GH_CODEOWNER');
   const template = getEnvVariableOrEmpty('GH_TEMPLATE');
   const repoCheckers = new RepoCheckers(githubApi, owner, repo, template, admin);
   const discordWebhook = getEnvVariableOrEmpty('DISCORD_WEBHOOK');
@@ -31,7 +30,6 @@ const createRepo = async () => {
     // Check or create main branch
     await repoUtils.checkBranchExistsOrCreate(owner, repo, 'main');
 
-    await repoUtils.addCodeowners(owner, repo, codeowner == '' ? 'defi-wonderland/default-codeowner' : codeowner);
     if (projectCode != '') {
       await repoUtils.addAutolink(owner, repo, projectCode);
       await repoUtils.addPrTemplate(owner, repo, projectCode);
