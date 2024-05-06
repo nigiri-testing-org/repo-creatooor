@@ -5,8 +5,10 @@ import { RepoCheckers } from './utils/repo-checkers';
 import { RepoUtils } from './utils/repo-utils';
 
 (async () => {
-  const token = getEnvVariable('GH_TOKEN');
-  const githubApi = new GithubApi(token);
+  const appId = getEnvVariable('GH_APP_ID');
+  const installationId = getEnvVariable('GH_INSTALLATION_ID');
+  const privateKey = getEnvVariable('GH_APP_PRIVATE_KEY');
+  const githubApi = await GithubApi.initialize(appId, installationId, privateKey);
   const owner = getEnvVariable('GH_OWNER');
   const repoUtils = new RepoUtils(githubApi);
   const repo = getEnvVariable('GH_REPO_NAME');
@@ -78,12 +80,13 @@ import { RepoUtils } from './utils/repo-utils';
       console.info(message);
       discordNotifications.push(message);
     }
+
+    notifyDiscord(discordWebhook, discordNotifications.join('\n\n'));
   } catch (err) {
-    console.error(err);
     const message = `👨‍⚕️❌ Repo doctor failed to heal **${repo}**\nIt will need manual intervention, please check the detailed logs at: https://github.com/defi-wonderland/repo-creatooor/actions/workflows/repo-doctor.yml`;
     console.info(message);
     discordNotifications.push(message);
-  } finally {
     notifyDiscord(discordWebhook, discordNotifications.join('\n\n'));
+    throw err;
   }
 })();

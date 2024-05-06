@@ -5,8 +5,10 @@ import { RepoCheckers } from './utils/repo-checkers';
 import { RepoUtils } from './utils/repo-utils';
 
 const createRepo = async () => {
-  const token = getEnvVariable('GH_TOKEN');
-  const githubApi = new GithubApi(token);
+  const appId = getEnvVariable('GH_APP_ID');
+  const installationId = getEnvVariable('GH_INSTALLATION_ID');
+  const privateKey = getEnvVariable('GH_APP_PRIVATE_KEY');
+  const githubApi = await GithubApi.initialize(appId, installationId, privateKey);
   const owner = getEnvVariable('GH_OWNER');
   const repoUtils = new RepoUtils(githubApi);
   const repo = getEnvVariable('GH_REPO_NAME').replace(/ /g, '-');
@@ -47,11 +49,11 @@ const createRepo = async () => {
     console.log(`Link to the repo https://github.com/${owner}/${repo}`);
     notifyDiscord(discordWebhook, `Repo **${repo}** successfully created 🚀 \nLink to the repo https://github.com/${owner}/${repo}`);
   } catch (err) {
-    console.error(err);
     await notifyDiscord(
       discordWebhook,
       `Repo **${repo}** creation failed ❌ please check the detailed logs at: https://github.com/defi-wonderland/repo-creatooor/actions/workflows/repo-creation.yml`
     );
+    throw err;
   }
 };
 
