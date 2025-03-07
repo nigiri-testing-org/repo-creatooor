@@ -14,6 +14,7 @@ import {
   ListBranchesResponse,
   Repo,
   UpdateRepoPayload,
+  AccessPermission,
 } from '../types/github';
 
 export class RepoUtils {
@@ -167,5 +168,11 @@ export class RepoUtils {
     console.log(`Found ${allRepos.length} repos!`);
     console.log('Successfully got all repos!');
     return allRepos;
+  }
+
+  async addTeamAccess(owner: string, repoName: string, teamSlug: string, permission: AccessPermission): Promise<void> {
+    console.log(`Adding ${teamSlug} team with ${permission} permission to ${repoName}...`);
+    await this.githubApi.addTeamAccess(owner, repoName, teamSlug, permission);
+    console.log(`${teamSlug} team added with ${permission} permission!`);
   }
 }

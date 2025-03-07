@@ -18,6 +18,7 @@ import {
   Repo,
   BranchResponse,
   UpdateRepoPayload,
+  AccessPermission,
 } from '../types/github';
 
 export class GithubApi {
@@ -204,5 +205,11 @@ export class GithubApi {
       console.log(`Checking if ${path} exists: ${err}`);
       return false;
     }
+  }
+
+  async addTeamAccess(owner: string, repo: string, teamSlug: string, permission: AccessPermission): Promise<void> {
+    await this.axios.put(`/orgs/${owner}/teams/${teamSlug}/repos/${owner}/${repo}`, {
+      permission,
+    });
   }
 }
