@@ -103,13 +103,6 @@ export class RepoCheckers {
     if (newRepo) {
       this.log(`Checking admin role for ${this.owner}...`);
       const collaborators = await this.githubApi.getCollaborators(this.owner, this.repo);
-      this.log(`Collaborators: ${JSON.stringify(collaborators)}`);
-      this.log(
-        JSON.stringify({
-          condition: collaborators.find((c) => c.login == this.admin)?.permissions.admin == true,
-          message: `Repo ${this.admin} does not have admin role for ${this.owner}`,
-        })
-      );
       repoAssertions.push({
         condition: collaborators.find((c) => c.login == this.admin)?.permissions.admin == true,
         message: `Repo ${this.admin} does not have admin role for ${this.owner}`,
