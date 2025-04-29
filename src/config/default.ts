@@ -4,7 +4,7 @@ export const defaultRepoCreateConfig = (owner: string, name: string, description
   org: owner,
   name: name,
   description: description,
-  private: true,
+  private: false,
   has_issues: false,
   has_projects: false,
   has_wiki: false,
@@ -72,5 +72,5 @@ export const defaultCreateRepoFromTemplateConfig = (owner: string, repo: string)
   name: repo,
   description: '',
   include_all_branches: false,
-  private: true,
+  private: false,
 });
