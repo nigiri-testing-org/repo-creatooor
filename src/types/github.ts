@@ -328,6 +328,8 @@ export type CollaboratorsResponse = {
   };
 }[];
 
+export type CollaboratorAffiliation = 'all' | 'direct' | 'outside';
+
 export type Repo = {
   id: number;
   name: string;

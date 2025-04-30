@@ -19,6 +19,7 @@ import {
   BranchResponse,
   UpdateRepoPayload,
   AccessPermission,
+  CollaboratorAffiliation,
 } from '../types/github';
 
 export class GithubApi {
@@ -183,8 +184,32 @@ export class GithubApi {
     return data;
   }
 
-  async getCollaborators(owner: string, repo: string): Promise<CollaboratorsResponse> {
-    const { data } = await this.axios.get<CollaboratorsResponse>(`/repos/${owner}/${repo}/collaborators`);
+  /**
+   * Get collaborators for a repository
+   * @param owner - The owner of the repository
+   * @param repo - The name of the repository
+   * @param params - The parameters for the request
+   * @param params.affiliation (@default 'all') - The affiliation of the collaborators to get
+   * @param params.per_page (@default 30) - The number of collaborators to get per page
+   * @param params.page (@default 1) - The page number to get
+   * @returns The collaborators for the repository
+   */
+  async getCollaborators(
+    owner: string,
+    repo: string,
+    params?: { affiliation?: CollaboratorAffiliation; per_page?: number; page?: number }
+  ): Promise<CollaboratorsResponse> {
+    const affiliation = params?.affiliation ?? 'all';
+    const per_page = params?.per_page ?? 30;
+    const page = params?.page ?? 1;
+
+    const { data } = await this.axios.get<CollaboratorsResponse>(`/repos/${owner}/${repo}/collaborators`, {
+      params: {
+        affiliation,
+        per_page,
+        page,
+      },
+    });
     return data;
   }
 
